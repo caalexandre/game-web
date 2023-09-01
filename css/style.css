@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+#screen {
+    border: 10px solid #0000005e;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    width: 400px;
+    height: 400px;
+}
+
+ul{
+    list-style-type: none;
+    display: inline-flex;
+    
+}
+
+#status{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+img {
+    width: 30px;
+    height: 30px;
+}
+
+#hp, #points{
+    font-size: 28px;
+}
+
+#buy{
+    width: 150px;
+    height: 50px;
+    border: none;
+    background: #666;
+}
+
+#buy:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+    transition: .1s;
+}
+
+#buy p:nth-child(even){
+    color: gold;
+}
+
+#buy p:nth-child(odd){
+    color: white;
+}
