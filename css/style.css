@@ -36,24 +36,3 @@ img {
 #hp, #points{
     font-size: 28px;
 }
-
-#buy{
-    width: 150px;
-    height: 50px;
-    border: none;
-    background: #666;
-}
-
-#buy:hover{
-    transform: scale(1.05);
-    cursor: pointer;
-    transition: .1s;
-}
-
-#buy p:nth-child(even){
-    color: gold;
-}
-
-#buy p:nth-child(odd){
-    color: white;
-}
