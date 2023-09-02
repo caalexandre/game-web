@@ -7,63 +7,74 @@ const game = {
         'player1': { x: 12, y: 12, hp: 3, points: 0 },
     },
     enemies: {
-        'enemy1': { x: randomPosition(), y: randomPosition() },
+        'enemy1': { x: 1, y: 1 },
     },
     coins: {
         'coin1': { x: randomPosition(), y: randomPosition() },
-    },
+    }
 }
 
 
 const moves = {
-    ArrowUp(player, enemy) {
+    ArrowUp(player) {
         if (player.y > 0) {
             player.y -= 1
-            if (player.y === enemy.y && player.x === enemy.x) {
-                enemyDamage(player)
-                player.y += 2
+            for (const enemyId in game.enemies) {
+                const enemy = game.enemies[enemyId]
+                if (player.y === enemy.y && player.x === enemy.x) {
+                    enemyDamage(player)
+                    player.y += 2
+                }
             }
-
-            collectCoin(player)
         }
-
+        collectCoin(player)
     },
-    ArrowDown(player, enemy) {
-        if (player.y < 24) {
+    
+    ArrowDown(player) {
+        if (player.y < 14) {
             player.y += 1
-            if (player.y === enemy.y && player.x === enemy.x) {
-                enemyDamage(player)
-                player.y -= 2
-            } 
-
-            collectCoin(player)
+            for (const enemyId in game.enemies) {
+                const enemy = game.enemies[enemyId]
+                if (player.y === enemy.y && player.x === enemy.x) {
+                    enemyDamage(player)
+                    player.y -= 2
+                }
+            }
         }
+        collectCoin(player)
     },
-    ArrowLeft(player, enemy) {
+
+    ArrowLeft(player) {
         if (player.x > 0) {
             player.x -= 1
-            if (player.y === enemy.y && player.x === enemy.x) {
-                enemyDamage(player)
-                player.x += 2
-            } 
-
+            for (const enemyId in game.enemies) {
+                const enemy = game.enemies[enemyId]
+                if (player.y === enemy.y && player.x === enemy.x) {
+                    enemyDamage(player)
+                    player.x += 2
+                }
+            }
+        } 
             collectCoin(player)
-        }
         
     },
-    ArrowRight(player, enemy) {
-        if (player.x < 24) {
+
+    ArrowRight(player) {
+        if (player.x < 14) {
             player.x += 1
-            if (player.y === enemy.y && player.x === enemy.x) {
-                enemyDamage(player)
-                player.x -= 2
+            for (const enemyId in game.enemies) {
+                const enemy = game.enemies[enemyId]
+                if (player.y === enemy.y && player.x === enemy.x) {
+                    enemyDamage(player)
+                    player.x -= 2
+                }
             }
-
-            collectCoin(player)
         }
-    }
-
+            collectCoin(player)
+    },
 }
+
+
 
 document.addEventListener('keydown', handleKeydown)
 
@@ -102,7 +113,7 @@ function collectCoin(player) {
 }
 
 function randomPosition() {
-    return Math.floor(Math.random() * 25)
+    return Math.floor(Math.random() * 15)
 }
 
 async function enemyMovement(){
@@ -113,7 +124,7 @@ renderScreen()
 
 function renderScreen() {
     context.fillStyle = 'white'
-    context.clearRect(0, 0, 25, 25)
+    context.clearRect(0, 0, 15, 15)
 
     for (const playerId in game.players) {
         const player = game.players[playerId]
