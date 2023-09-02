@@ -7,7 +7,7 @@ const game = {
         'player1': { x: 12, y: 12, hp: 3, points: 0 },
     },
     enemies: {
-        'enemy1': { x: 1, y: 1 },
+        'enemy1': { x: randomPosition(), y: randomPosition() },
     },
     coins: {
         'coin1': { x: randomPosition(), y: randomPosition() },
